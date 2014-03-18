@@ -1,14 +1,14 @@
 var Experigen =  {
 	settings: {
 
-		experimentName: "Default", // use only A-Z, a-z, 0-9
+		experimentName: "HSE", // use only A-Z, a-z, 0-9
 		
 		databaseServer: "http://db.phonologist.org/",
 
 		online: true, // make sure you know what you're doing before changing this
 		
 		strings: {
-			windowTitle:     "Wug test",
+			windowTitle:     "HSE",
 			connecting:		 "Connecting...",
 			loading:         "Loading...",
 			soundButton:     "    ►    ",
