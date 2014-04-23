@@ -1,92 +1,47 @@
-<div style="text-align: left;">
 <input type="hidden" name="destination" value="demographics.csv">
-Спасибо!
-В заключение ответьте, пожалуйста, на эти вопросы:
+
+Thank you! Please answer the following questions about your language background.
 
 <p>
-Сколько вам лет? <br>
-<input type="text" name="age" value="" SIZE="30" MAXLENGTH="100" style="width: 30em;">
+What was the first language you learned?<br />
+<input type="text" name="firstlang" value="" SIZE="30" MAXLENGTH="100" style="width: 25em;">
+</p>
 
 <p>
-
-Ваш пол
-	<select name="sex" style="position: absolute; left:15em; margin-top:-2px;">
-		<option value="none">Выберите</option>
-		<option value="male">Мужской</option>
-		<option value="female">Женский</option>
-	</select>
-	
+What language do you primarily speak at home?<br />
+<input type="text" name="primarylang" value="" SIZE="30" MAXLENGTH="100" style="width: 25em;">
+</p>
 
 <p>
-Ваше образование  
-	<select name="education" style="position: absolute; left:15em; margin-top:-2px;">
-		<option value="none">Выберите</option>
-		<option value="srednee">Среднее</option>
-		<option value="sred.spec">Среднее специальное</option>
-		<option value="higher.incomplete">Неоконченное высшее</option>
-		<option value="higher">Высшее</option>
-		<option value="PhD">Ученая степень/PhD</option>
-	</select>
-<p>
-
-Ваш родной язык <br>
-<input type="text" name="native.lang" value="" SIZE="30" MAXLENGTH="100" style="width: 30em;">
+Where are you from?  <br />
+<input type="text" name="from" value="" SIZE="30" MAXLENGTH="100" style="width: 25em;">
+</p>
 
 <p>
-
-Говорите ли вы на других языках? На каких? <br>
-<input type="text" name="foreign.lang" value="" SIZE="30" MAXLENGTH="100" style="width: 30em;">
-
-<p>
-
-Область профессиональной деятельности <br>
-<input type="text" name="profession" value="" SIZE="30" MAXLENGTH="100" style="width: 30em;">
+When were you born? <br />
+<input type="text" name="born" value="" SIZE="30" MAXLENGTH="100" style="width: 25em;">
+</p>
 
 <p>
-
-Вы  
-	<select name="dominant.hand" style="position: absolute; left:9em; margin-top:-2px;">
-		<option value="none">Выберите</option>
-		<option value="right">Правша</option>
-		<option value="left">Левша</option>
-		<option value="ambidexter">Одинаково владеете обеими руками</option>
-		<option value="former.left">Переученный левша</option>
-	</select>
-<p>
-
-Есть ли у вас проблемы со слухом?
-	<select name="hearing" style="position: absolute; left:20em; margin-top:-2px;">
-		<option value="none">Выберите</option>
-		<option value="hearing.ok">Нет</option>
-		<option value="hearing.bad">Да</option>
-	</select>
-<p>
-
-
-Вы слушали с помощью
-	<select name="audio" style="position: absolute; left:12em; margin-top:-2px;">
-		<option value="none">Выберите</option>
-		<option value="headphones">Наушников</option>
-		<option value="speakers">Колонок</option>
-		<option value="laptop.speakers">Встроенных колонок ноутбука</option>
-		<option value="other">Другое</option>
-	</select>
-<p>
-
-
-Если в ходе эксперимента у вас возникли замечания или вопросы, напишите об этом.
-<textarea ROWS="6" COLS="30" name="sugg" style="padding: 0px; width: 30em;"></textarea><br>
+Sex:<br />
+<input type="text" name="sex" value="" SIZE="30" MAXLENGTH="100" style="width: 25em;">
+</p>
 
 <p>
-
-Пожалуйста, укажите ваш e-mail для связи. 
-<input type="text" name="email" value="" SIZE="30" MAXLENGTH="100" style="width: 30em;">
+What other languages do you speak? <br />
+<input type="text" name="otherlang" value="" SIZE="30" MAXLENGTH="100" style="width: 25em;">
+</p>
 
 <p>
+We would love to hear any comments or questions you might have.<br />
+<textarea ROWS="6" COLS="30" name="sugg" style="padding: 0px; width: 25em;"></textarea><br>
+</p>
 
+<p>
+Please leave us your email if you'd like us to get back to you.<br />
+<input type="text" name="email" value="" SIZE="30" MAXLENGTH="100" style="width: 25em;">
+</p>
 
-<P style="text-align: right;">
+<p style="text-align: right;">
 <input type="button" value="   send   " onClick="Experigen.recordResponse(this);">
-	
-
-</div>
+</p>
