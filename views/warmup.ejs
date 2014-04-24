@@ -1,0 +1,35 @@
+
+<div style="text-align: center;">
+  <p>
+	  Click play to hear an example sentence. Once you've listened to the sentence, please rate its acceptability on a scale from 1 to 5. 
+	</p>
+</div>
+
+<div class="trialpartWrapper" style="float:left; height: 3em; width: 40%;">
+	<%= makeSoundButton({soundFile: audio + '.mp3'}) %>
+</div>
+
+<div class="trialpartWrapper" style="clear:both; text-align: center;">  
+  <p>
+	  Is the sentence you heard an acceptable sentence in English?<br />1 corresponds to a completely unacceptable sentence.<br />5 corresponds to completely acceptable sentence.
+  </p>
+	<%= makeScale({buttons: ["1","2","3","4","5"], edgelabels: ["completely unacceptable", "completely acceptable"], disable:true }) %>
+</div>
+
+<div class="trialpartWrapper" style="clear:both; height: 5em; text-align: center;">  
+	<p>
+		Next you will be asked a follow-up question about the sentence you heard. 
+	</p>
+	<p>
+		<%= comprehension %>
+	</p>
+	<p>
+		<%= makeScale({buttons: ["Unclear","Yes","No"], edgelabels: ["", ""] }) %>
+	</p>
+	&nbsp;
+</div>
+
+<input type="hidden" name="condition" value="<%= condition %>" />
+<input type="hidden" name="item" value="<%= item %>" />
+
+<div style="clear: both; height: 1px;">&nbsp;</div>
