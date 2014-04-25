@@ -1,26 +1,14 @@
 
 <div class="trialpartWrapper" style="text-align: left;">
-	Здравствуйте! <br> <br>
-Спасибо, что согласились принять участие в нашем эксперименте.  <br> <br>
-Просим вас прослушать предложения на русском языке и оценить степень их грамматической правильности. 
-Если в предложении, на ваш взгляд, допущена ошибка, и оно неприемлемо с точки зрения русского языка, нажмите пробел. Нажимайте пробел сразу же, как только вы услышите ошибку.  <br> <br>
-
-В случае, если вы считаете, что предложение соответствует нормам русского языка, не нажимайте ничего. 
-Следующее предложение начнет проигрываться автоматически.
- <br>
-Каждое предложение вы сможете прослушать только один раз.  <br> <br>
-
-Наденьте наушники и нажмите кнопку «Дальше».
-Сейчас у вас будет небольшая тренировка, чтобы вы привыкли к заданию. <br> <br>
- 
+	Welcome! 
 	<p>
-	Наденьте наушники и нажмите на пробел, чтобы услышать предложение:
-	<%= makeSoundButton("1_1_fill.mp3") %>
+	Please put your headphones on and listen to this made-up word:
+	<%= makeSoundButton("pharon.mp3") %>
 </div>
 
 
 <div class="trialpartWrapper" style="text-align: left;">
-	Были ла в предложении ошибка?
+	What did you hear?
 	<%= makeTextInput({allowempty: false, matchRegExpression: "[pfshb]h?[aeiou]+r[aeiou]+[mn]", rightAnswer: "pharon", feedbackID: "#feedback", feedbackWrong: "Okay. We were hoping you would write something like RIGHTANSWER.", feedbackMatch: "Pretty close! The word we had in mind was RIGHTANSWER.",  feedbackRight: "Great! The right answer is indeed RIGHTANSWER." }) %>
 	<%= continueButton("►") %>
 	<p>
@@ -32,4 +20,3 @@
 	<p>
 	<%= continueButton() %>
 </div>
-
