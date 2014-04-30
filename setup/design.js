@@ -5,7 +5,7 @@ Experigen.initialize = function () {
 //	var test_length = items.length;
 	
 	
-	tests = tests.pairWith("view","stimulus.ejs").shuffle();
+	tests = tests.pairWith("view","stimulus.ejs");
 //    tests[0].view = "warmup.ejs";
 
 	this.addStaticScreen("intro.ejs");
