@@ -29,25 +29,6 @@
 	&nbsp;
 </div>
 
-<input type="hidden" name="condition" value="<%= condition %>" />
-<input type="hidden" name="item" value="<%= item %>" />
-
-
-	<p>
-	Наденьте наушники и нажмите на пробел, чтобы услышать предложение:
-	<%= makeSoundButton("1_1_fill.mp3") %>
-</div>
-
-
-<div class="trialpartWrapper" style="text-align: left;">
-	Были ла в предложении ошибка?
-	<%= makeTextInput({allowempty: false, matchRegExpression: "[pfshb]h?[aeiou]+r[aeiou]+[mn]", rightAnswer: "pharon", feedbackID: "#feedback", feedbackWrong: "Okay. We were hoping you would write something like RIGHTANSWER.", feedbackMatch: "Pretty close! The word we had in mind was RIGHTANSWER.",  feedbackRight: "Great! The right answer is indeed RIGHTANSWER." }) %>
-	<%= continueButton("►") %>
-	<p>
-	<div id="feedback"></div>
-</div>
-
-
 <div style="clear: both; height: 1px;">&nbsp;</div>
 <div class="trialpartWrapper" style="text-align: left;">
 	<p>
