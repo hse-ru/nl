@@ -14,8 +14,8 @@ var Experigen =  {
 			connecting:		 "Connecting...",
 			loading:         "Loading...",
 			soundButton:     "    ►    ",
-			continueButton:  "   continue   ",
-			errorMessage:    "An error occurred. We apologize for the inconvenience.",
+			continueButton:  "   Дальше   ",
+			errorMessage:    "Возникла непредвиденная ошибка. Просим прощения за неудобство.",
 			emptyBoxMessage: "Please supply your answer in the text box."
 		},
 		
