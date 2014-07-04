@@ -494,7 +494,7 @@ var timer_maker = function (  ) {
 			onfinish:function() {
 				if (advance) {
 					if (soundFile2 === "") {
-						Experigen.screen().advance();
+						setTimeout(Experigen.screen().advance(), 3000);	
 					} else {
 						soundManager.play(soundID2);
 						setTimeout(Experigen.screen().advance(), 3000);	
