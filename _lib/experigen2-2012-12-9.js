@@ -232,8 +232,7 @@ var timer_maker = function (  ) {
 		// play the sound
 		soundManager.play(soundID);
 
-//		setTimeout(3000);
-	
+
 		for (i=0; i<Experigen.screen().soundbuttons.length; i+=1) {
 			if (Experigen.screen().soundbuttons[i].id === soundID) {
 				Experigen.screen().soundbuttons[i].presses += 1;
@@ -480,11 +479,12 @@ var timer_maker = function (  ) {
 					soundManager.createSound({
 						id: soundID2,
 						url: soundFile2,
-						autoPlay: false, 
+						autoPlay: true, 
 						autoLoad: true,
 						onload:function() {
 						},
 						onfinish:function() {
+		setTimeout(3000);
 							if (advance) {
 								Experigen.screen().advance();
 							}
