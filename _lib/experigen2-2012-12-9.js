@@ -471,7 +471,7 @@ var timer_maker = function (  ) {
 		soundManager.createSound({
 			id: soundID,
 			url: soundFile,
-			autoPlay: true, 
+			autoPlay: false, 
 			autoLoad: true,
 			onload:function() {
 
@@ -479,7 +479,7 @@ var timer_maker = function (  ) {
 					soundManager.createSound({
 						id: soundID2,
 						url: soundFile2,
-						autoPlay: true, 
+						autoPlay: false, 
 						autoLoad: true,
 						onload:function() {
 						},
@@ -491,7 +491,7 @@ var timer_maker = function (  ) {
 					});
 				}
 			},
-			onfinish:function() 
+			onfinish:function() {
 				if (advance) {
 					if (soundFile2 === "") {
 						Experigen.screen().advance();
