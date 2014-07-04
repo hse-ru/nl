@@ -468,6 +468,8 @@ var timer_maker = function (  ) {
 		}
 		var soundID2  = soundID + "2";
 
+        var delay = 3000;
+
 		soundManager.createSound({
 			id: soundID,
 			url: soundFile,
@@ -487,7 +489,7 @@ var timer_maker = function (  ) {
 							if (advance) {
 								setTimeout(function() {
 									Experigen.screen().advance();
-								}, 3000);
+								}, delay);
 							}
 						}
 					});
@@ -498,7 +500,7 @@ var timer_maker = function (  ) {
 					if (soundFile2 === "") {
 						setTimeout(function() {
 							Experigen.screen().advance();
-						}, 3000);
+						}, delay);
 					} else {
 						soundManager.play(soundID2);
 					}
