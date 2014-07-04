@@ -498,6 +498,7 @@ var timer_maker = function (  ) {
 			onfinish:function() {
 				if (advance) {
 					if (soundFile2 === "") {
+						button.style.visibility = "hidden"; // let's try
 						setTimeout(function() {
 							Experigen.screen().advance();
 						}, delay);
