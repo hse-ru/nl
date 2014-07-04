@@ -506,7 +506,7 @@ var timer_maker = function (  ) {
 		str += '<input type="button" ';
 		str += ' id="' + soundID +'"';
 		str += ' value="' + label + '"';
-	//	str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this);"'
+		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this);"'
 		str += ' class="soundbutton"'
 		str += '>';
 		return str;
