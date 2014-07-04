@@ -498,7 +498,7 @@ var timer_maker = function (  ) {
 					} else {
 						soundManager.play(soundID2);
 						setTimeout(function(){
-							Experigen.screen().advance();  // added Anna to proceed without "next" button
+							Experigen.screen().advance()  // added Anna to proceed without "next" button
 						}, 3000)			// wait for the slowpokes
 						
 					}
