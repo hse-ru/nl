@@ -484,7 +484,6 @@ var timer_maker = function (  ) {
 						onload:function() {
 						},
 						onfinish:function() {
-		setTimeout(3000);
 							if (advance) {
 								Experigen.screen().advance();
 							}
@@ -493,6 +492,7 @@ var timer_maker = function (  ) {
 				}
 			},
 			onfinish:function() {
+		setTimeout(3000);
 				if (advance) {
 					if (soundFile2 === "") {
 						Experigen.screen().advance();
