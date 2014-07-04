@@ -236,7 +236,7 @@ var timer_maker = function (  ) {
 				Experigen.screen().soundbuttons[i].presses += 1;
 			}
 		}
-		setTimeout(3000);
+		setTimeout('', 3000);
 		// find who called it, so the screen can advance 
 		// when the sound is done playing
 		Experigen.screen().findCaller(caller);
