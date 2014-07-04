@@ -479,7 +479,7 @@ var timer_maker = function (  ) {
 					soundManager.createSound({
 						id: soundID2,
 						url: soundFile2,
-						autoPlay: true, 
+						autoPlay: false, 
 						autoLoad: true,
 						onload:function() {
 						},
@@ -497,7 +497,10 @@ var timer_maker = function (  ) {
 						Experigen.screen().advance();
 					} else {
 						soundManager.play(soundID2);
-						setTimeout(function(){Experigen.screen().advance()}, 3000);	
+						setTimeout(function() {
+							Experigen.screen().advance();
+                            alert("Advanced!");
+						}, 3000);	
 						// wait for the slowpokes. Why does it not work?
 					}
 				}
