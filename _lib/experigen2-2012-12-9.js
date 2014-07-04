@@ -491,8 +491,7 @@ var timer_maker = function (  ) {
 					});
 				}
 			},
-			onfinish:function() {
-		setTimeout(3000);
+			onfinish:function() 
 				if (advance) {
 					if (soundFile2 === "") {
 						Experigen.screen().advance();
@@ -507,7 +506,7 @@ var timer_maker = function (  ) {
 		str += '<input type="button" ';
 		str += ' id="' + soundID +'"';
 		str += ' value="' + label + '"';
-		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this);"'
+	//	str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this);"'
 		str += ' class="soundbutton"'
 		str += '>';
 		return str;
