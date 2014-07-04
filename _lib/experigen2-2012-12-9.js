@@ -497,8 +497,9 @@ var timer_maker = function (  ) {
 						Experigen.screen().advance();
 					} else {
 						soundManager.play(soundID2);
-						setTimeout(function() {Experigen.screen().advance();}, 3000);	
-// wait for the slowpokes
+						Experigen.screen().advance();
+// setTimeout(function(){Experigen.screen().advance()}, 3000);	
+// wait for the slowpokes. Why does it not work?
 						
 					}
 				}
