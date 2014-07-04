@@ -485,7 +485,9 @@ var timer_maker = function (  ) {
 						},
 						onfinish:function() {
 							if (advance) {
-								Experigen.screen().advance();
+								setTimeout(function() {
+									Experigen.screen().advance();
+								}, 3000);
 							}
 						}
 					});
@@ -494,14 +496,11 @@ var timer_maker = function (  ) {
 			onfinish:function() {
 				if (advance) {
 					if (soundFile2 === "") {
-						Experigen.screen().advance();
-					} else {
-						soundManager.play(soundID2);
 						setTimeout(function() {
 							Experigen.screen().advance();
-                            alert("Advanced!");
-						}, 3000);	
-						// wait for the slowpokes. Why does it not work?
+						}, 3000);
+					} else {
+						soundManager.play(soundID2);
 					}
 				}
 			}
