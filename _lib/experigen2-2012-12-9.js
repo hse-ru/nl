@@ -486,7 +486,6 @@ var timer_maker = function (  ) {
 						onload:function() {
 						},
 						onfinish:function() {
-button.style.visibility = "hidden";
 							if (advance) {
 								setTimeout(function() {
 									Experigen.screen().advance();
@@ -497,7 +496,6 @@ button.style.visibility = "hidden";
 				}
 			},
 			onfinish:function() {
-button.style.visibility = "hidden";
 				if (advance) {
 					if (soundFile2 === "") {
 						setTimeout(function() {
