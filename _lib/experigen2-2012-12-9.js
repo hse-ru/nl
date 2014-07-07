@@ -468,7 +468,7 @@ var timer_maker = function (  ) {
 		}
 		var soundID2  = soundID + "2";
 
-        var delay = 3000;
+//       var delay = 3000;
 
 		soundManager.createSound({
 			id: soundID,
@@ -489,7 +489,7 @@ var timer_maker = function (  ) {
 							if (advance) {
 								setTimeout(function() {
 									Experigen.screen().advance();
-								}, delay);
+								}, 3000);
 							}
 						}
 					});
@@ -498,10 +498,9 @@ var timer_maker = function (  ) {
 			onfinish:function() {
 				if (advance) {
 					if (soundFile2 === "") {
-						button.style.visibility = "hidden"; // let's try
 						setTimeout(function() {
 							Experigen.screen().advance();
-						}, delay);
+						}, 3000);
 					} else {
 						soundManager.play(soundID2);
 					}
