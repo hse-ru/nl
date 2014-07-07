@@ -496,6 +496,7 @@ var timer_maker = function (  ) {
 				}
 			},
 			onfinish:function() {
+
 				if (advance) {
 					if (soundFile2 === "") {
 						setTimeout(function() {
@@ -519,6 +520,7 @@ var timer_maker = function (  ) {
 	}
 
 	return that;
+  button.style.visibility = "hidden";
 }
 
 
