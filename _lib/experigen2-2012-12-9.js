@@ -457,6 +457,7 @@ var timer_maker = function (  ) {
 		var soundID  = obj.soundID || (Experigen.screen()[Experigen.resources.items.key]||"") + Experigen.screen().trialnumber + Experigen.screen().soundbuttons.length;
 		var soundFile = Experigen.settings.folders.sounds + obj.soundFile;
 		var advance = true;
+var hide    = (obj.hide) ? true  : false;
 		if (obj.advance===false) {
 			advance = false;
 		}
