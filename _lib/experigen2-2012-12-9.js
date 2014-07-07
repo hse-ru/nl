@@ -520,7 +520,6 @@ var timer_maker = function (  ) {
 	}
 
 	return that;
-  button.style.visibility = "hidden";
 }
 
 
