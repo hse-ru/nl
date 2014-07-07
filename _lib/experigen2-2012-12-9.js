@@ -903,7 +903,7 @@ Experigen.printScreensToConsole = function () {
 
 Experigen.recordResponse = function (callerbutton) {
 	this.sendForm($("#currentform"));
-//	this.advance(callerbutton);
+	this.advance(callerbutton);
 }
 
 
