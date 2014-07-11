@@ -463,7 +463,7 @@ if(document.all) document.all.mydiv.style.visibility="hidden";
 		var soundFile = Experigen.settings.folders.sounds + obj.soundFile;
 		var advance = true;
 	//	var disable = (obj.disable) ? true  : false;
-		var hide    = (obj.hide) ? true  : false;
+		var hide    = obj.hide;
 		if (obj.advance===false) {
 			advance = false;
 		}
@@ -503,7 +503,7 @@ if(document.all) document.all.mydiv.style.visibility="hidden";
 				}
 			},
 			onfinish:function() {
-hide = true;
+hide;
 				if (advance) {
 					if (soundFile2 === "") {
 						setTimeout(function() {
