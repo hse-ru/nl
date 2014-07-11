@@ -6,7 +6,7 @@ var Experigen =  {
 		
 		databaseServer: "http://db.phonologist.org/",
 
-		online: true,
+		online: false,
 		
 		strings: {
 		    // SETUP: Enter Title for Browser Window
