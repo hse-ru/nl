@@ -447,6 +447,14 @@ var timer_maker = function (  ) {
 
 	}
 
+////////
+
+function hide(obj) {
+    var el = document.getElementById(obj);
+        el.style.display = 'none';
+}
+
+///////////
 
 	that.makeSoundButton = function (obj) {
 
@@ -458,7 +466,7 @@ var timer_maker = function (  ) {
 		var soundFile = Experigen.settings.folders.sounds + obj.soundFile;
 		var advance = true;
 	//	var disable = (obj.disable) ? true  : false;
-		var hide    = obj.hide;
+	//	var hide    = obj.hide;
 		if (obj.advance===false) {
 			advance = false;
 		}
@@ -498,7 +506,6 @@ var timer_maker = function (  ) {
 				}
 			},
 			onfinish:function() {
-hide;
 				if (advance) {
 					if (soundFile2 === "") {
 						setTimeout(function() {
@@ -515,7 +522,7 @@ hide;
 		str += '<input type="button" ';
 		str += ' id="' + soundID +'"';
 		str += ' value="' + label + '"';
-		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this)"';
+		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this); hide(this);"';
 		str += ' class="soundbutton"';
 		str += '>';
 		return str;
