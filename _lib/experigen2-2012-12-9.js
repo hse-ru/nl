@@ -447,7 +447,11 @@ var timer_maker = function (  ) {
 
 	}
 
-
+function hide(){
+if(document.layers) document.layers['mydiv'].visibility="hide";
+if(document.getElementById) document.getElementById("mydiv").style.visibility="hidden";
+if(document.all) document.all.mydiv.style.visibility="hidden";
+}
 
 	that.makeSoundButton = function (obj) {
 
@@ -517,8 +521,8 @@ var timer_maker = function (  ) {
 		str += ' id="' + soundID +'"';
 		str += ' value="' + label + '"';
 		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this);"'
+str += ' onClick="hide();"'
 		str += ' class="soundbutton"'
-str += ' button.style.visibility = "hidden"'
 		str += '>';
 		return str;
 	}
