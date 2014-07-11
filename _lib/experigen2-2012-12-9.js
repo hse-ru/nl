@@ -479,7 +479,7 @@ var timer_maker = function (  ) {
 			autoPlay: false, 
 			autoLoad: true,
 			onload:function() {
- button.style.visibility = "hidden";
+
 				if (soundFile2 != "") {
 					soundManager.createSound({
 						id: soundID2,
@@ -516,8 +516,9 @@ var timer_maker = function (  ) {
 		str += '<input type="button" ';
 		str += ' id="' + soundID +'"';
 		str += ' value="' + label + '"';
-		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this);" '
+		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this);"'
 		str += ' class="soundbutton"'
+str += ' button.style.visibility = "hidden"'
 		str += '>';
 		return str;
 	}
