@@ -522,7 +522,7 @@ function hide(obj) {
 		str += '<input type="button" ';
 		str += ' id="' + soundID +'"';
 		str += ' value="' + label + '"';
-		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this); alert(\'HERE\'); document.getElementById(\'' + soundID + '\').style.display=\'none\';" '; 
+		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this); document.getElementById(\'' + soundID + '\').style.display=\'none\';" '; 
 		str += ' class="soundbutton"';
 		str += '>';
 		return str;
