@@ -520,8 +520,8 @@ if(document.all) document.all.mydiv.style.visibility="hidden";
 		str += '<input type="button" ';
 		str += ' id="' + soundID +'"';
 		str += ' value="' + label + '"';
-		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this);hide();"'
-		str += ' class="soundbutton"'
+		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this)"';
+		str += ' class="soundbutton"';
 		str += '>';
 		return str;
 	}
