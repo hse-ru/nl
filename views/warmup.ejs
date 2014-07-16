@@ -1,11 +1,16 @@
-<div style="text-align:center">
-	  Нажмите на кнопку "Ошибка!", если в предложении есть ошибка. Если ошибок нет, не нажимайте ничего. 
-</div>
+<div class="trialpartWrapper" style="text-align: left;">
+<p>
+	Нажмите на кнопку "Ошибка!", если в предложении есть ошибка. Если ошибок нет, не нажимайте ничего.  
+<p>
 
-<div class="trialpartWrapper" style="float:left; height: 3em; width: 40%;">
-		<%= makeSoundButton("tr1.mp3") %>
-   <p>
+	<%= makeSoundButton("tr1.mp3") %>
+
+<p>
+
 	<%= makeScale({buttons: ["Ошибка!"], edgelabels: ["", ""], disable:true, hide:true}) %>
 </div>
 
-<div style="clear: both; height: 1px;">&nbsp;</div>
+<p>
+	<%= continueButton() %>
+
+
