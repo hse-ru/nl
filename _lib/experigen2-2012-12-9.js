@@ -33,13 +33,13 @@ var timer_maker = function (  ) {
     return {
         set_start_time: function ( ) {
             start_time = new Date().getTime();
-            alert("STARTED: " + start_time);
+  //          alert("STARTED: " + start_time);
         },
         log_part: function ( responseID ) {
             
             // Immediately record stop time
             stop_time = new Date().getTime();
-            alert("STOPPED: " + stop_time);
+  //          alert("STOPPED: " + stop_time);
 
             var responseName = 'response' + responseID + '_time';
             
