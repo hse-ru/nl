@@ -447,7 +447,6 @@ var timer_maker = function (  ) {
 
 	}
 
-
 	that.makeSoundButton = function (obj) {
 
 		if (typeof obj==="string") {
@@ -514,7 +513,7 @@ var timer_maker = function (  ) {
 		str += '<input type="button" ';
 		str += ' id="' + soundID +'"';
 		str += ' value="' + label + '"';
-		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this); document.getElementById(\'' + soundID + '\').style.display=\'none\';" '; 
+		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this); document.getElementById(\'' + soundID + '\').style.display=\'none\'; if(Experigen.trackTimes) {Experigen.timeTracker.set_start_time(  );}" '; 
 		str += ' class="soundbutton"';
 		str += '>';
 		return str;
