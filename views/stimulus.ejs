@@ -6,10 +6,9 @@
 	<%= makeSoundButton({soundFile: audio + '.mp3'}) %>
 
 <p>
-<%= makeScale({buttons: ["Ошибка!"], edgelabels: ["", ""], disable:true, hide:true, rightAnswer: "1"}) %>
+<%= makeScale({buttons: ["Ошибка!"], edgelabels: ["", ""], disable:true, hide:true}) %>
 
 </div>
 <input type="hidden" name="condition" value="<%= condition %>" />
 <input type="hidden" name="item" value="<%= item %>" />
 
-<div style="clear: both; height: 1px;">&nbsp;</div>
