@@ -1,10 +1,8 @@
-<div class="trialpartWrapper" style="text-align: left;">
-<p>
-	Нажмите на пробел, если в предложении есть ошибка. Если ошибок нет, не нажимайте ничего. 
-<p>
-
-	<%= makeSoundButton("1_1_fill.mp3") %>
-
-	<p>
-	<%= continueButton() %>
+div style="text-align:center">
+  <p>
+	  Нажмите на кнопку "Ошибка!", если в предложении есть ошибка. Если ошибок нет, не нажимайте ничего. 
+  <p>
+		<%= makeSoundButton("tr1.mp3") %>
+   <br> <br>
+	<%= makeScale({buttons: ["Ошибка!"], edgelabels: ["", ""], disable:true, hide:true, rightAnswer: 0}) %>
 </div>
