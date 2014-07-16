@@ -33,11 +33,13 @@ var timer_maker = function (  ) {
     return {
         set_start_time: function ( ) {
             start_time = new Date().getTime();
+            alert("STARTED: " + start_time);
         },
         log_part: function ( responseID ) {
             
             // Immediately record stop time
             stop_time = new Date().getTime();
+            alert("STOPPED: " + stop_time);
 
             var responseName = 'response' + responseID + '_time';
             
@@ -513,7 +515,7 @@ var timer_maker = function (  ) {
 		str += '<input type="button" ';
 		str += ' id="' + soundID +'"';
 		str += ' value="' + label + '"';
-		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this); document.getElementById(\'' + soundID + '\').style.display=\'none\'; if(Experigen.trackTimes) {Experigen.timeTracker.set_start_time(  );}" '; 
+		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this); document.getElementById(\'' + soundID + '\').style.display=\'none\'; if(Experigen.trackTimes) {Experigen.timeTracker.set_start_time();}" '; 
 		str += ' class="soundbutton"';
 		str += '>';
 		return str;
