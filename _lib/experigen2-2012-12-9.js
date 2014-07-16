@@ -168,9 +168,9 @@ var timer_maker = function (  ) {
 					$(part).show();
 
 					// TIMER: Reset Start Time
-					if(Experigen.trackTimes) {
-				        Experigen.timeTracker.set_start_time(  );    
-				    }
+//					if(Experigen.trackTimes) {
+//				        Experigen.timeTracker.set_start_time(  );    
+//				    }
 
 					// give focus to the first form object inside, if any
 					$(part).find(':input[type!="hidden"][class!="scaleButton"]').first().focus();
@@ -447,14 +447,6 @@ var timer_maker = function (  ) {
 
 	}
 
-////////
-
-function hide(obj) {
-    var el = document.getElementById(obj);
-        el.style.display = 'none';
-}
-
-///////////
 
 	that.makeSoundButton = function (obj) {
 
