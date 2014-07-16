@@ -525,7 +525,6 @@ var timer_maker = function (  ) {
 }
 
 
-
 //printing the content of js/dataconnection.js
 
 ;// connection to local text files and to the database
