@@ -44,7 +44,7 @@ var timer_maker = function (  ) {
             var responseName = 'response' + responseID + '_time';
             
             // If a response doesn't exist for this part, add new response
-//            if(!response_times.hasOwnProperty(responseName)) {
+            if(!response_times.hasOwnProperty(responseName)) {
                 response_times[responseName] = 
                     { start: start_time,
                       stop: stop_time,
@@ -52,7 +52,7 @@ var timer_maker = function (  ) {
                       number: 1 
                     };
   				alert("response recorded");
-//            }
+            }
             
             // If a response has already been logged, recalculate the response time with new stop time
 //            else {
