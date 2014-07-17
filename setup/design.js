@@ -6,6 +6,7 @@ Experigen.initialize = function () {
 	tests = items.pairWith("view","stimulus.ejs");
 
 	this.addStaticScreen("intro.ejs");
+	this.addStaticScreen("concent.ejs");
 	this.addStaticScreen("warmup.ejs");
 	this.addStaticScreen("warmup1.ejs");
 	this.addStaticScreen("warmup2.ejs");
