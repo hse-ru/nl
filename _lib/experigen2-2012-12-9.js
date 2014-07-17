@@ -44,22 +44,23 @@ var timer_maker = function (  ) {
             var responseName = 'response' + responseID + '_time';
             
             // If a response doesn't exist for this part, add new response
-            if(!response_times.hasOwnProperty(responseName)) {
+//            if(!response_times.hasOwnProperty(responseName)) {
                 response_times[responseName] = 
                     { start: start_time,
                       stop: stop_time,
                       time: stop_time - start_time,
                       number: 1 
                     };
-            }
+  				alert("response recorded");
+//            }
             
             // If a response has already been logged, recalculate the response time with new stop time
-            else {
-                response_times[responseName]['stop'] = stop_time;
-                response_times[responseName]['time'] = stop_time - response_times[responseName]['start'];
-                response_times[responseName]['number'] = response_times[responseName]['number'] + 1;
-            }
-        },
+//            else {
+//                response_times[responseName]['stop'] = stop_time;
+//                response_times[responseName]['time'] = stop_time - response_times[responseName]['start'];
+//                response_times[responseName]['number'] = response_times[responseName]['number'] + 1;
+//            }
+//        },
         get_response_times: function ( ) {
             return response_times;
         },
