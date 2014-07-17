@@ -55,12 +55,12 @@ var timer_maker = function (  ) {
             }
             
             // If a response has already been logged, recalculate the response time with new stop time
-//            else {
-//                response_times[responseName]['stop'] = stop_time;
-//                response_times[responseName]['time'] = stop_time - response_times[responseName]['start'];
-//                response_times[responseName]['number'] = response_times[responseName]['number'] + 1;
-//            }
-//        },
+            else {
+                response_times[responseName]['stop'] = stop_time;
+                response_times[responseName]['time'] = stop_time - response_times[responseName]['start'];
+                response_times[responseName]['number'] = response_times[responseName]['number'] + 1;
+            }
+        },
         get_response_times: function ( ) {
             return response_times;
         },
