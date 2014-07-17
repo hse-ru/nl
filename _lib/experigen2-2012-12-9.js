@@ -51,13 +51,12 @@ var timer_maker = function (  ) {
                       time: stop_time - start_time,
                       number: 1 
                     };
-  				alert("response recorded");
             }
             
             // If a response has already been logged, recalculate the response time with new stop time
             else {
                 response_times[responseName]['stop'] = stop_time;
-                response_times[responseName]['time'] = time;
+                response_times[responseName]['time'] = time;  //to record the first button press
                 response_times[responseName]['number'] = response_times[responseName]['number'] + 1;
             }
         },
