@@ -1,31 +1,19 @@
 Experigen.initialize = function () {
 	
-	var items  = this.resource("items");
-	var frames = this.resource("frames");
-
-	items = items.pairWith("frame", frames.shuffle())
-
-	var sampleItem =  items.subset("type","filler").chooseRandom(1)
-			.pairWith("order",1)
-			.pairWith("view","stimulus.ejs")
-			;
-
-	var block1 = []
-			.concat(items.subset("type","stim").subset("shape","iamb").chooseRandom(2))
-			.concat(items.subset("type","stim").subset("shape","mono").chooseRandom(2))
-			.concat(items.subset("type","stim").subset("shape","trochee").chooseRandom(2))
-			.pairWith("view","stimulus.ejs")
-			.shuffle()
-			.pairWith("order",[1,2])
-			.shuffle()
-			;
-
+    var tests = [];
+	var items = this.resource("items");	
+	
+	tests = items.pairWith("view","stimulus.ejs");
 
 	this.addStaticScreen("intro.ejs");
-	this.addBlock(sampleItem);
-	this.addStaticScreen("getgoing.ejs");
-	this.addBlock(block1);
+	this.addStaticScreen("concent.ejs");
+	this.addStaticScreen("warmup.ejs");
+//	this.addStaticScreen("warmup1.ejs");
+//	this.addStaticScreen("warmup2.ejs");
+//	this.addStaticScreen("warmup3.ejs");
+//	this.addStaticScreen("warmup4.ejs");
+	this.addStaticScreen("getgoing.ejs")
+	this.addBlock(tests);
 	this.addStaticScreen("demographic.ejs");
 	this.addStaticScreen("finalthanks.ejs");
-	
 }
