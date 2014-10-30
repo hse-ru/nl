@@ -831,7 +831,7 @@ Experigen.advance = function(callerButton) {
 					break;
 				
 				case ".ejs":
-					html = new EJS({url: screen.url}).render(screen);
+					html = new EJS({url: screen.url}).render(screen, { audio: 'peekaboo' });
 					$("#main").html(prefix + html + suffix);
 					$("#main").find(':input[type!="hidden"]').first().focus();
 					screen.advance();
