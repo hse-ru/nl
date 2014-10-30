@@ -1,23 +1,27 @@
 var Experigen =  {
 	settings: {
 
-		experimentName: "Default", // use only A-Z, a-z, 0-9
+        // SETUP: Enter Experiment Name
+		experimentName: "HSE", // use only A-Z, a-z, 0-9
 		
 		databaseServer: "http://db.phonologist.org/",
 
-		online: true, // make sure you know what you're doing before changing this
+		online: true,
 		
 		strings: {
-			windowTitle:     "Wug test",
-			connecting:		 "Connecting...",
-			loading:         "Loading...",
+		    // SETUP: Enter Title for Browser Window
+			windowTitle:     "HSE",
+			connecting:		 "Подключаемся...",
+			loading:         "Загружаю данные...",
 			soundButton:     "    ►    ",
-			continueButton:  "   continue   ",
-			errorMessage:    "An error occurred. We apologize for the inconvenience.",
-			emptyBoxMessage: "Please supply your answer in the text box."
+			continueButton:  "   Дальше   ",
+			errorMessage:    "Возникла непредвиденная ошибка. Просим прощения за неудобство.",
+			emptyBoxMessage: "Пожалуйста, заполните эту форму."
 		},
 		
 		audio: true,
+		
+		recordResponseTimes: true,
 		
 		progressbar: {
 			visible: true, 
@@ -25,11 +29,9 @@ var Experigen =  {
 			percentage: false
 		},
 		
-		items: "resources/items.txt",
+		items: "resources/index.txt",
 		
-		otherresources: {
-			frames: "resources/frames.txt",
-			pictures: "resources/pictures.txt"	
+		otherresources: {	
 		},
 
 		folders: {
