@@ -1,9 +1,14 @@
-<div class="trialpartWrapper" style="clear:both; text-align: center;">  
-	Press one of these two buttons.   We'll tell you which one was right as soon as it's too late to change your mind. 
-	<p>
-	<%= makeScale({buttons: ["YMMV", "YOLO"], edgelabels: ["", ""], disable: true, rightAnswer: "YOLO", feedbackID: "#feedback", feedbackWrong: "No, you were supposed to press RIGHTANSWER.",  feedbackRight: "Great! RIGHTANSWER is the right answer."  }) %>
-	<div id="feedback" style="padding:30px;"></div>
+<div class="trialpartWrapper" style="text-align: left;">
+<p>
+	Нажмите на кнопку "Ошибка!", если в предложении есть ошибка. Если ошибок нет, не нажимайте ничего. 
+<p>
+
+	<%= makeSoundButton({soundFile: audio + '.mp3'}) %>
+
+<p>
+<%= makeScale({buttons: ["Ошибка!"], edgelabels: ["", ""], disable:true, hide:true, rightAnswer: "1"}) %>
 
 </div>
-
+<input type="hidden" name="condition" value="<%= condition %>" />
+<input type="hidden" name="item" value="<%= item %>" />
 <div style="clear: both; height: 1px;">&nbsp;</div>
