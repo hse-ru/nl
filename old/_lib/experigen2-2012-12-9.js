@@ -33,11 +33,13 @@ var timer_maker = function (  ) {
     return {
         set_start_time: function ( ) {
             start_time = new Date().getTime();
+  //          alert("STARTED: " + start_time);
         },
         log_part: function ( responseID ) {
             
             // Immediately record stop time
             stop_time = new Date().getTime();
+  //          alert("STOPPED: " + stop_time);
 
             var responseName = 'response' + responseID + '_time';
             
@@ -54,7 +56,7 @@ var timer_maker = function (  ) {
             // If a response has already been logged, recalculate the response time with new stop time
             else {
                 response_times[responseName]['stop'] = stop_time;
-                response_times[responseName]['time'] = stop_time - response_times[responseName]['start'];
+                response_times[responseName]['time'] = time;  //to record the first button press
                 response_times[responseName]['number'] = response_times[responseName]['number'] + 1;
             }
         },
@@ -168,9 +170,9 @@ var timer_maker = function (  ) {
 					$(part).show();
 
 					// TIMER: Reset Start Time
-					if(Experigen.trackTimes) {
-				        Experigen.timeTracker.set_start_time(  );    
-				    }
+//					if(Experigen.trackTimes) {
+//				        Experigen.timeTracker.set_start_time(  );    
+//				    }
 
 					// give focus to the first form object inside, if any
 					$(part).find(':input[type!="hidden"][class!="scaleButton"]').first().focus();
@@ -199,7 +201,8 @@ var timer_maker = function (  ) {
 		str += '<div class="scaleEdgeLabel">' + edgelabels[0] + '</div>';
 		for (var i=0; i<buttons.length; i+=1) {
 			str += '<div class="scalebuttonWrapper">';
-			str += '<input type="' + buttontype + '" value="'+ buttons[i] +'" id="' + Experigen.screen().responses + 'button' + i + '" name="scale'+ Experigen.screen().responses +'" class="scaleButton" onClick="Experigen.screen().recordResponse(' + Experigen.screen().responses + "," + "'" + buttons[i] + "'" + ');Experigen.screen().continueButtonClick(this,{hide:' +  hide + ',disable:' + disable + '});';
+			str += '<input type="' + buttontype + '" value="'+ buttons[i] +'" id="' + Experigen.screen().responses + 'button' + i + '" name="scale'+ Experigen.screen().responses +'" class="scaleButton" onClick="Experigen.screen().recordResponse(' + Experigen.screen().responses + "," + "'" + buttons[i] + "'"+ ');';
+// + ');Experigen.screen().continueButtonClick(this,{hide:' +  hide + ',disable:' + disable + '});';
 
 			if (obj.rightAnswer) {
 				str += 'Experigen.screen().feedbackOnText(this,\'' + obj.feedbackID + '\',\'' + obj.matchRegExpression + '\',\'' + obj.rightAnswer + '\',\'' + obj.feedbackWrong + '\',\'' + obj.feedbackMatch + '\',\'' + obj.feedbackRight + '\')';
@@ -231,6 +234,8 @@ var timer_maker = function (  ) {
 	that.playSound = function (soundID, caller) {
 		// play the sound
 		soundManager.play(soundID);
+
+
 		for (i=0; i<Experigen.screen().soundbuttons.length; i+=1) {
 			if (Experigen.screen().soundbuttons[i].id === soundID) {
 				Experigen.screen().soundbuttons[i].presses += 1;
@@ -444,8 +449,6 @@ var timer_maker = function (  ) {
 
 	}
 
-
-
 	that.makeSoundButton = function (obj) {
 
 		if (typeof obj==="string") {
@@ -455,6 +458,8 @@ var timer_maker = function (  ) {
 		var soundID  = obj.soundID || (Experigen.screen()[Experigen.resources.items.key]||"") + Experigen.screen().trialnumber + Experigen.screen().soundbuttons.length;
 		var soundFile = Experigen.settings.folders.sounds + obj.soundFile;
 		var advance = true;
+	//	var disable = (obj.disable) ? true  : false;
+	//	var hide    = obj.hide;
 		if (obj.advance===false) {
 			advance = false;
 		}
@@ -465,6 +470,8 @@ var timer_maker = function (  ) {
 			soundFile2 = Experigen.settings.folders.sounds + obj.soundFile2;
 		}
 		var soundID2  = soundID + "2";
+
+//       var delay = 3000;
 
 		soundManager.createSound({
 			id: soundID,
@@ -483,7 +490,9 @@ var timer_maker = function (  ) {
 						},
 						onfinish:function() {
 							if (advance) {
-								Experigen.screen().advance();
+								setTimeout(function() {
+									Experigen.screen().advance();
+								}, 3000);
 							}
 						}
 					});
@@ -492,7 +501,9 @@ var timer_maker = function (  ) {
 			onfinish:function() {
 				if (advance) {
 					if (soundFile2 === "") {
-						Experigen.screen().advance();
+						setTimeout(function() {
+							Experigen.screen().advance();
+						}, 3000);
 					} else {
 						soundManager.play(soundID2);
 					}
@@ -504,15 +515,14 @@ var timer_maker = function (  ) {
 		str += '<input type="button" ';
 		str += ' id="' + soundID +'"';
 		str += ' value="' + label + '"';
-		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this);"'
-		str += ' class="soundbutton"'
+		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this); document.getElementById(\'' + soundID + '\').style.display=\'none\'; if(Experigen.trackTimes) {Experigen.timeTracker.set_start_time();}" '; 
+		str += ' class="soundbutton"';
 		str += '>';
 		return str;
 	}
 
 	return that;
 }
-
 
 
 //printing the content of js/dataconnection.js
