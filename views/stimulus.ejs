@@ -1,30 +1,9 @@
-<div style="text-align:center">
-  <p>
-	  Click play to hear an example sentence. Once you've listened to the sentence, please rate its acceptability on a scale from 1 to 5. 
-	</p>
-</div>
-
-<div class="trialpartWrapper" style="float:left; height: 3em; width: 40%;">
-	<%= makeSoundButton({soundFile: audio + '.mp3'}) %>
-</div>
-
-<div class="trialpartWrapper" style="clear:both; height: 3em; text-align: center;">  
-	How do you rate the acceptability of this sentence?
-	<p>
-	<%= makeScale({buttons: ["1","2","3","4","5"], edgelabels: ["completely unacceptable", "completely acceptable"], disable:true }) %>
-</div>
-
-
 <div class="trialpartWrapper" style="clear:both; text-align: center;">  
+	Press one of these two buttons.   We'll tell you which one was right as soon as it's too late to change your mind. 
 	<p>
-	    <%= comprehension %>
-	</p>
-	
-	<%= makeScale({buttons: ["Unclear","Yes", "No"], edgelabels: ["", ""], disable: true, rightAnswer: answer}) %>
-	
-</div>
+	<%= makeScale({buttons: ["YMMV", "YOLO"], edgelabels: ["", ""], disable: true, rightAnswer: "YOLO", feedbackID: "#feedback", feedbackWrong: "No, you were supposed to press RIGHTANSWER.",  feedbackRight: "Great! RIGHTANSWER is the right answer."  }) %>
+	<div id="feedback" style="padding:30px;"></div>
 
-<input type="hidden" name="condition" value="<%= condition %>" />
-<input type="hidden" name="item" value="<%= item %>" />
+</div>
 
 <div style="clear: both; height: 1px;">&nbsp;</div>
