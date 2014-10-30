@@ -1,16 +1,14 @@
 var Experigen =  {
 	settings: {
 
-        // SETUP: Enter Experiment Name
-		experimentName: "EnterExperimentNameHere", // use only A-Z, a-z, 0-9
+		experimentName: "Default", // use only A-Z, a-z, 0-9
 		
 		databaseServer: "http://db.phonologist.org/",
 
-		online: true,
+		online: true, // make sure you know what you're doing before changing this
 		
 		strings: {
-		    // SETUP: Enter Title for Browser Window
-			windowTitle:     "Enter Title Here",
+			windowTitle:     "Wug test",
 			connecting:		 "Connecting...",
 			loading:         "Loading...",
 			soundButton:     "    ►    ",
@@ -21,17 +19,17 @@ var Experigen =  {
 		
 		audio: true,
 		
-		recordResponseTimes: true,
-		
 		progressbar: {
 			visible: true, 
 			adjustWidth: 6,
 			percentage: false
 		},
 		
-		items: "resources/index.txt",
+		items: "resources/items.txt",
 		
-		otherresources: {	
+		otherresources: {
+			frames: "resources/frames.txt",
+			pictures: "resources/pictures.txt"	
 		},
 
 		folders: {

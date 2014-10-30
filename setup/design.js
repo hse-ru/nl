@@ -1,45 +1,31 @@
 Experigen.initialize = function () {
 	
-	var conditionList = function (tests, condition) {
-	    var conditions = [];
-	    
-	    for(var i = 0; i < tests.length; i++) {
-	        if(!conditions.contains(tests[i][condition])) {
-	            conditions.push(tests[i][condition]);
-	        }
-	    }
-	    return conditions;
-	}
+	var items  = this.resource("items");
+	var frames = this.resource("frames");
 
-    var tests = [];
-	
-	var items = this.resource("items");
-	
-	// Separate tests from fillers
-	var all_tests = items.exclude("condition","filler");
-	var fillers = items.subset("condition","filler");
-	
-	var latin_square_row = conditionList(all_tests,"condition");
-	var num_conditions = latin_square_row.length;
-	
-	
-	latin_square_row = latin_square_row.shuffle();
-	
-	var test_length = all_tests.length/num_conditions;
-	
-	// Apply Latin Square selection to each question
-	for(var i = 1; i <= test_length; i += 1) {
-	    tests = tests.concat(all_tests.subset("item",i.toString()).subset("condition",latin_square_row[(i % num_conditions)]));
-	}
-	
-	tests = tests.concat(fillers);
-	
-	tests = tests.pairWith("view","stimulus.ejs").shuffle();
-    tests[0].view = "warmup.ejs";
+	items = items.pairWith("frame", frames.shuffle())
+
+	var sampleItem =  items.subset("type","filler").chooseRandom(1)
+			.pairWith("order",1)
+			.pairWith("view","stimulus.ejs")
+			;
+
+	var block1 = []
+			.concat(items.subset("type","stim").subset("shape","iamb").chooseRandom(2))
+			.concat(items.subset("type","stim").subset("shape","mono").chooseRandom(2))
+			.concat(items.subset("type","stim").subset("shape","trochee").chooseRandom(2))
+			.pairWith("view","stimulus.ejs")
+			.shuffle()
+			.pairWith("order",[1,2])
+			.shuffle()
+			;
+
 
 	this.addStaticScreen("intro.ejs");
-	this.addBlock(tests);
+	this.addBlock(sampleItem);
+	this.addStaticScreen("getgoing.ejs");
+	this.addBlock(block1);
 	this.addStaticScreen("demographic.ejs");
 	this.addStaticScreen("finalthanks.ejs");
-
+	
 }
