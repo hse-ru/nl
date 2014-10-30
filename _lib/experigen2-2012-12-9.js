@@ -4,10 +4,75 @@
 
 
 
+//printing the content of js/timerModule.js
+
+;/**********************************************
+* timerModule.js
+*
+* Creates an object that tracks response times for experigen trials.
+* Designed to record times for each part in a screen, then return times
+* in an object to write to database server. 
+*
+* by Carl Pillot
+* last update 9-20-12
+***********************************************/
+
+var timer_maker = function (  ) {
+    
+    // private variables
+    var start_time = 0;
+    var stop_time = 0;
+    var response_times = {};
+    
+    var clear_values = function (  ) {
+            start_time = 0;
+            stop_time = 0;
+            response_times = {};
+    };
+    
+    return {
+        set_start_time: function ( ) {
+            start_time = new Date().getTime();
+  //          alert("STARTED: " + start_time);
+        },
+        log_part: function ( responseID ) {
+            
+            // Immediately record stop time
+            stop_time = new Date().getTime();
+  //          alert("STOPPED: " + stop_time);
+
+            var responseName = 'response' + responseID + '_time';
+            
+            // If a response doesn't exist for this part, add new response
+            if(!response_times.hasOwnProperty(responseName)) {
+                response_times[responseName] = 
+                    { start: start_time,
+                      stop: stop_time,
+                      time: stop_time - start_time,
+                      number: 1 
+                    };
+            }
+            
+            // If a response has already been logged, recalculate the response time with new stop time
+            else {
+                response_times[responseName]['stop'] = stop_time;
+                response_times[responseName]['time'] = time;  //to record the first button press
+                response_times[responseName]['number'] = response_times[responseName]['number'] + 1;
+            }
+        },
+        get_response_times: function ( ) {
+            return response_times;
+        },
+        new_frame: function ( ) {
+            clear_values( );
+        }
+    };
+}
+
+
 //printing the content of js/trial.js
 
-;
-Experigen.make_into_trial = function (that) {
+;Experigen.make_into_trial = function (that) {
 
 	that.userCode = Experigen.userCode;
 	that.userFileName = Experigen.userFileName;
@@ -20,7 +85,7 @@ Experigen.make_into_trial = function (that) {
 	that.callingPart = 0;
 	that.soundbuttons = [];
 	that.responses = 0;
-	
+
 
 	that.advance = function(spec) {
 		var parts = $(".trialpartWrapper");
@@ -46,9 +111,9 @@ Experigen.make_into_trial = function (that) {
 			// current part
 			part = "#" + "part" + Experigen.screen().currentPart;
 			// does it contain text boxes that shouldn't allowed to be empty?
-			if (/textInputNotEmpty/.test($(part).find(':input').first().attr("class")) && !Experigen.screen().checkEmpty($(part).find(':input').first())) {
+			if ($(part).find(':input').first().attr("class")==="textInputNotEmpty" && !Experigen.screen().checkEmpty($(part).find(':input').first())) {
 				return false;
-			} else {
+			} else {			    
 				// no text boxes to fill, we can move on
 				// hide current part first if needed
 				if (spec && spec.hide) {
@@ -60,8 +125,9 @@ Experigen.make_into_trial = function (that) {
 				}
 				// now advance and show next part, or advance to next screen
 				Experigen.screen().currentPart += 1;
+
 				if (Experigen.screen().currentPart > Experigen.screen().parts.length) {
-					
+
 					// add all require data to the current form
 					for (i in Experigen.fieldsToSave) {
 						var str = "";
@@ -77,15 +143,37 @@ Experigen.make_into_trial = function (that) {
 						var str= "<input type='hidden' name='sound" + (i+1) + "' value='" + Experigen.screen().soundbuttons[i].presses + "'>\n";
 						$("#currentform").append(str);
 					}
+
+					// Add timing values to current form if necessary
+					if(Experigen.trackTimes) {
+                        var responseTimes = Experigen.timeTracker.get_response_times(  );
+                        for (x in responseTimes) {
+                            str = "<input type='hidden' name='" + x + "' value='" + responseTimes[x]['time'] + "'>";
+                            $("#currentform").append(str);
+                        }
+					}
+
 					// send the form
-					// enable all text fields before sending, because disabled elements will not be sent
-					$("#currentform " + 'input[type="text"]').prop("disabled",false)
+					// enabled all text fields before sending, because disabled elements will not be sent
+					$("#currentform " + 'input[type="text"]').attr("disabled","")
 					Experigen.sendForm($("#currentform"));
+
+					// reset time tracker values for next screen
+					if(Experigen.trackTimes) {
+					    Experigen.timeTracker.new_frame( );
+					}
+
 					Experigen.advance();
 				} else {
 					// show next part
 					part = "#" + "part" + Experigen.screen().currentPart;
 					$(part).show();
+
+					// TIMER: Reset Start Time
+//					if(Experigen.trackTimes) {
+//				        Experigen.timeTracker.set_start_time(  );    
+//				    }
+
 					// give focus to the first form object inside, if any
 					$(part).find(':input[type!="hidden"][class!="scaleButton"]').first().focus();
 				}
@@ -94,7 +182,7 @@ Experigen.make_into_trial = function (that) {
 		return true;
 	}
 
-	
+
 	that.makeScale = function(obj) {
 		Experigen.screen().responses++;
 		var buttons = obj.buttons || ["1","2","3","4","5","6","7"];
@@ -113,7 +201,8 @@ Experigen.make_into_trial = function (that) {
 		str += '<div class="scaleEdgeLabel">' + edgelabels[0] + '</div>';
 		for (var i=0; i<buttons.length; i+=1) {
 			str += '<div class="scalebuttonWrapper">';
-			str += '<input type="' + buttontype + '" value="'+ buttons[i] +'" id="' + Experigen.screen().responses + 'button' + i + '" name="scale'+ Experigen.screen().responses +'" class="scaleButton" onClick="Experigen.screen().recordResponse(' + Experigen.screen().responses + "," + "'" + buttons[i] + "'" + ');Experigen.screen().continueButtonClick(this,{hide:' +  hide + ',disable:' + disable + '});';
+			str += '<input type="' + buttontype + '" value="'+ buttons[i] +'" id="' + Experigen.screen().responses + 'button' + i + '" name="scale'+ Experigen.screen().responses +'" class="scaleButton" onClick="Experigen.screen().recordResponse(' + Experigen.screen().responses + "," + "'" + buttons[i] + "'"+ ');';
+// + ');Experigen.screen().continueButtonClick(this,{hide:' +  hide + ',disable:' + disable + '});';
 
 			if (obj.rightAnswer) {
 				str += 'Experigen.screen().feedbackOnText(this,\'' + obj.feedbackID + '\',\'' + obj.matchRegExpression + '\',\'' + obj.rightAnswer + '\',\'' + obj.feedbackWrong + '\',\'' + obj.feedbackMatch + '\',\'' + obj.feedbackRight + '\')';
@@ -129,6 +218,11 @@ Experigen.make_into_trial = function (that) {
 	}
 
 	that.recordResponse = function (scaleNo, buttonNo) {
+
+		// Record response time for part
+		if(Experigen.trackTimes) {
+		    Experigen.timeTracker.log_part( scaleNo );
+		}
 		/// make all the necessary fields in document.forms["currentform"],
 		/// and fill them with data
 		if (scaleNo!==undefined && buttonNo!==undefined) {
@@ -140,6 +234,8 @@ Experigen.make_into_trial = function (that) {
 	that.playSound = function (soundID, caller) {
 		// play the sound
 		soundManager.play(soundID);
+
+
 		for (i=0; i<Experigen.screen().soundbuttons.length; i+=1) {
 			if (Experigen.screen().soundbuttons[i].id === soundID) {
 				Experigen.screen().soundbuttons[i].presses += 1;
@@ -171,11 +267,9 @@ Experigen.make_into_trial = function (that) {
 		return comingFrom;
 	}
 
-	
+
 	that.makeTextInput = function (obj) {
 
-		Experigen.screen().responses++;
-	
 		if (typeof obj==="string") {
 			obj = {initValue: obj}
 		}
@@ -252,7 +346,7 @@ Experigen.make_into_trial = function (that) {
 
 
 	that.makePicture = function (obj) {
-	
+
 		if (typeof obj==="string") {
 			obj = {src: obj}
 		}
@@ -263,7 +357,7 @@ Experigen.make_into_trial = function (that) {
 			obj.scr = "";
 		}
 		obj.src = Experigen.settings.folders.pictures + obj.src;
-	
+
 		var str = "";
 		str += "<img ";
 		if (obj.src) {
@@ -303,7 +397,7 @@ Experigen.make_into_trial = function (that) {
 		return str;	
 	}
 
-	
+
 	that.checkEmpty = function (obj) {
 
 		if ($(obj).val().match(/^\s*$/)) {
@@ -352,11 +446,9 @@ Experigen.make_into_trial = function (that) {
 		} else {
 			Experigen.advance(caller);
 		}
-	
+
 	}
 
-
-	
 	that.makeSoundButton = function (obj) {
 
 		if (typeof obj==="string") {
@@ -364,64 +456,73 @@ Experigen.make_into_trial = function (that) {
 		}
 		var label = obj.label || Experigen.settings.strings.soundButton;
 		var soundID  = obj.soundID || (Experigen.screen()[Experigen.resources.items.key]||"") + Experigen.screen().trialnumber + Experigen.screen().soundbuttons.length;
-		soundID = "_" + soundID; // force all sounds to start with a non-numeric character
 		var soundFile = Experigen.settings.folders.sounds + obj.soundFile;
 		var advance = true;
+	//	var disable = (obj.disable) ? true  : false;
+	//	var hide    = obj.hide;
 		if (obj.advance===false) {
 			advance = false;
 		}
 		Experigen.screen().soundbuttons.push({id: soundID, presses: 0, file: soundFile});
-		
+
 		var soundFile2 = "";
 		if (obj.soundFile2) {
 			soundFile2 = Experigen.settings.folders.sounds + obj.soundFile2;
 		}
-		var soundID2  = soundID + "_2";
-		
+		var soundID2  = soundID + "2";
+
+//       var delay = 3000;
+
 		soundManager.createSound({
 			id: soundID,
 			url: soundFile,
 			autoPlay: false, 
 			autoLoad: true,
+			onload:function() {
+
+				if (soundFile2 != "") {
+					soundManager.createSound({
+						id: soundID2,
+						url: soundFile2,
+						autoPlay: false, 
+						autoLoad: true,
+						onload:function() {
+						},
+						onfinish:function() {
+							if (advance) {
+								setTimeout(function() {
+									Experigen.screen().advance();
+								}, 3000);
+							}
+						}
+					});
+				}
+			},
 			onfinish:function() {
 				if (advance) {
 					if (soundFile2 === "") {
-						Experigen.screen().advance();
+						setTimeout(function() {
+							Experigen.screen().advance();
+						}, 3000);
 					} else {
 						soundManager.play(soundID2);
 					}
 				}
 			}
 		});
-		if (soundFile2 != "") {
-			soundManager.createSound({
-				id: soundID2,
-				url: soundFile2,
-				autoPlay: false, 
-				autoLoad: true,
-				onfinish:function() {
-					if (advance) {
-						Experigen.screen().advance();
-					}
-				}
-			});
-		}
+
 		var str = "";
 		str += '<input type="button" ';
 		str += ' id="' + soundID +'"';
 		str += ' value="' + label + '"';
-		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this);"'
-		str += ' class="soundbutton"'
+		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this); document.getElementById(\'' + soundID + '\').style.display=\'none\'; if(Experigen.trackTimes) {Experigen.timeTracker.set_start_time();}" '; 
+		str += ' class="soundbutton"';
 		str += '>';
 		return str;
 	}
 
 	return that;
 }
-
-
-
-
 
 
 //printing the content of js/dataconnection.js
@@ -615,10 +716,9 @@ Experigen.fieldsToSave = {};
 Experigen.resources = [];
 Experigen.position = -1;
 Experigen.initialized = false;
+Experigen.trackTimes = false;
 
-if (Experigen.settings.online===undefined) {
-	Experigen.settings.online = true; // set to true for old settings files
-}
+
 
 Experigen.launch = function () {
 	var that = this;
@@ -669,6 +769,13 @@ Experigen.load = function () {
 	this.progressbar = this.new_progressbar();
 	this.progressbar.initialize();
 
+    // Initialize response time tracker if necessary
+    if(this.settings.recordResponseTimes) { 
+        this.timeTracker = timer_maker(  );
+        this.trackTimes = true;
+    }
+    
+    
 	if (this.settings.audio) {
 
 		soundManager.onready(function() { 
