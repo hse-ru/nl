@@ -845,7 +845,7 @@ Experigen.advance = function(callerButton) {
 			
 		case this.TRIAL:
 			if (screen.view) {
-				html = new EJS({url: this.settings.folders.views + screen.view}).render(screen, { audio: 'peekaboo' });
+				html = new EJS({url: this.settings.folders.views + screen.view}).render(screen);
 				$("#main").html(prefix + html + suffix);
 				screen.advance();
 			} else {
