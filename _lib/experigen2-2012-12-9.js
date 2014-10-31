@@ -490,6 +490,7 @@ var timer_maker = function (  ) {
 								setTimeout(function() {
 									Experigen.screen().advance();
 								}, 3000);
+							}
 						}
 					});
 				}
