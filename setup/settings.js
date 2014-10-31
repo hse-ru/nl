@@ -2,7 +2,7 @@ var Experigen =  {
 	settings: {
 
         // SETUP: Enter Experiment Name
-		experimentName: "EnterExperimentNameHere", // use only A-Z, a-z, 0-9
+		experimentName: "HSE", // use only A-Z, a-z, 0-9
 		
 		databaseServer: "http://db.phonologist.org/",
 
@@ -10,13 +10,13 @@ var Experigen =  {
 		
 		strings: {
 		    // SETUP: Enter Title for Browser Window
-			windowTitle:     "Enter Title Here",
-			connecting:		 "Connecting...",
-			loading:         "Loading...",
+			windowTitle:     "HSE",
+			connecting:		 "Подключаемся...",
+			loading:         "Загружаю данные...",
 			soundButton:     "    ►    ",
-			continueButton:  "   continue   ",
-			errorMessage:    "An error occurred. We apologize for the inconvenience.",
-			emptyBoxMessage: "Please supply your answer in the text box."
+			continueButton:  "   Дальше   ",
+			errorMessage:    "Возникла непредвиденная ошибка. Просим прощения за неудобство.",
+			emptyBoxMessage: "Пожалуйста, заполните эту форму."
 		},
 		
 		audio: true,
