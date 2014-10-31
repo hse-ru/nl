@@ -1,6 +1,6 @@
 <div style="text-align:center">
   <p>
-	  Click play to hear an example sentence. Once you've listened to the sentence, please rate its acceptability on a scale from 1 to 5. 
+	  Нажмите на кнопку "Ошибка!", если в предложении есть ошибка. Если ошибок нет, не нажимайте ничего.  
 	</p>
 </div>
 
@@ -12,16 +12,6 @@
 	How do you rate the acceptability of this sentence?
 	<p>
 	<%= makeScale({buttons: ["1","2","3","4","5"], edgelabels: ["completely unacceptable", "completely acceptable"], disable:true }) %>
-</div>
-
-
-<div class="trialpartWrapper" style="clear:both; text-align: center;">  
-	<p>
-	    <%= comprehension %>
-	</p>
-	
-	<%= makeScale({buttons: ["Unclear","Yes", "No"], edgelabels: ["", ""], disable: true, rightAnswer: answer}) %>
-	
 </div>
 
 <input type="hidden" name="condition" value="<%= condition %>" />
