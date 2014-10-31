@@ -81,10 +81,8 @@ input, select, textarea {
 }
 
 .soundbutton {
+    margin-left: 265px;
 }
-
-
-
 .scaleWrapper {
 	text-align: center;
 }
