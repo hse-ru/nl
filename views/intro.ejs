@@ -1,22 +1,20 @@
 
 <div class="trialpartWrapper" style="text-align: left;">
-	Welcome! 
-	<p>
-	Please put your headphones on and listen to this made-up word:
-	<%= makeSoundButton("pharon.mp3") %>
-</div>
+	Здравствуйте! <br> <br>
+Спасибо, что согласились принять участие в нашем эксперименте.  <br> <br>
+Мы попросим вас прослушать предложения на русском языке и оценить степень их грамматической правильности.  <br> <br>
+Вам нужно будет нажать на кнопку "    ►    " и слушать. Если в предложении, на ваш взгляд, допущена ошибка, и оно неприемлемо с точки зрения русского языка, нажмите кнопку "Ошибка!". Нажимайте кнопку сразу же, как только вы услышите ошибку.  <br> <br>
 
+В случае, если вы считаете, что предложение соответствует нормам русского языка, не нажимайте ничего, и через 3 секунды вы сможете перейти к следующему предложению. 
+ <br>
+Каждое предложение вы сможете прослушать только один раз.  <br> <br>
 
-<div class="trialpartWrapper" style="text-align: left;">
-	What did you hear?
-	<%= makeTextInput({allowempty: false, matchRegExpression: "[pfshb]h?[aeiou]+r[aeiou]+[mn]", rightAnswer: "pharon", feedbackID: "#feedback", feedbackWrong: "Okay. We were hoping you would write something like RIGHTANSWER.", feedbackMatch: "Pretty close! The word we had in mind was RIGHTANSWER.",  feedbackRight: "Great! The right answer is indeed RIGHTANSWER." }) %>
-	<%= continueButton("►") %>
-	<p>
-	<div id="feedback"></div>
-</div>
+Весь эксперимент займёт у вас от 15 до 20 минут.
 
+Сейчас мы попросим у вас подтвердить, что вы согласны с условиями эксперимента, а затем вас ждёт небольшая тренировка, которая поможет привыкнуть к заданию.
+Наденьте наушники и нажмите кнопку «Дальше».
+ <br> <br>
 
-<div class="trialpartWrapper" style="text-align: left;">
-	<p>
 	<%= continueButton() %>
 </div>
+
