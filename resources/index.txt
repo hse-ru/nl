@@ -1,1 +1,1 @@
-audio	condition	item	stimulus	comprehension	answer1_1_fill	a	1	This is the woman that  because the police arrested the thief  everyone consoled her.	Did everyone console the woman?	y2_1_exp	b	1	This is the person that  because the police arrested the thief  everybody consoled.	Did everyone console the person?	y
+audio	condition	item	stimulus	answer1_1_fill	M_Pl	fill	В кабинете восемь шкафов у окна битком набиты бумагами.	02_1_exp	M_Sg	exp	"Ужасно смешная у этого клоуна шутка в представлении, надо запомнить."	0
