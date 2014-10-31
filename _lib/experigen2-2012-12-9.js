@@ -39,7 +39,7 @@ var timer_maker = function (  ) {
             
             // Immediately record stop time
             stop_time = new Date().getTime();
-            alert("STOPPED: " + stop_time);
+   //         alert("STOPPED: " + stop_time);
 
             var responseName = 'response' + responseID + '_time';
             
