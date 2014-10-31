@@ -33,7 +33,7 @@ var timer_maker = function (  ) {
     return {
         set_start_time: function ( ) {
             start_time = new Date().getTime();
-            alert("STARTED: " + start_time);
+  //          alert("STARTED: " + start_time);
         },
         log_part: function ( responseID ) {
             
