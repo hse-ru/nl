@@ -8,6 +8,21 @@
 	<%= makeSoundButton({soundFile: audio + '.mp3'}) %>
 </div>
 
+<div class="trialpartWrapper" style="clear:both; height: 3em; text-align: center;">  
+	How do you rate the acceptability of this sentence?
+	<p>
+	<%= makeScale({buttons: ["1","2","3","4","5"], edgelabels: ["completely unacceptable", "completely acceptable"], disable:true }) %>
+</div>
+
+
+<div class="trialpartWrapper" style="clear:both; text-align: center;">  
+	<p>
+	    <%= comprehension %>
+	</p>
+	
+	<%= makeScale({buttons: ["Unclear","Yes", "No"], edgelabels: ["", ""], disable: true, rightAnswer: answer}) %>
+	
+</div>
 
 <input type="hidden" name="condition" value="<%= condition %>" />
 <input type="hidden" name="item" value="<%= item %>" />
