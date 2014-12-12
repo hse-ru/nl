@@ -1,7 +1,7 @@
 # where your experiment is hosted
-experigen.sourceURL = "hse-ru.github.io.nl."
+experigen.sourceURL = "hseru.github.io.nl"
 # this information comes from your settings.js file
-experigen.experimentName = "HSE"
+experigen.experimentName = "HSElist1Dec12"
 experigen.database = "http://db.phonologist.org/"
 
 
