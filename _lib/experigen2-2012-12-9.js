@@ -474,7 +474,7 @@ var timer_maker = function (  ) {
 			id: soundID,
 			url: soundFile,
 			autoPlay: false, 
-			autoLoad: true,
+			autoLoad: false,		// fixing troubles
 			onload:function() {
 
 				if (soundFile2 != "") {
