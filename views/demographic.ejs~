@@ -34,7 +34,7 @@
 
 <p>
 
-Говорите ли вы на других языках? На каких и на каком уровне? <br>
+Говорите ли вы на других языках? На каких? <br>
 <input type="text" name="foreign.lang" value="" SIZE="30" MAXLENGTH="100" style="width: 30em;">
 
 <p>
