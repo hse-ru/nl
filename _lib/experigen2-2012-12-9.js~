@@ -512,7 +512,7 @@ var timer_maker = function (  ) {
 		str += '<input type="button" ';
 		str += ' id="' + soundID +'"';
 		str += ' value="' + label + '"';
-		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this); document.getElementById(\'' + soundID + '\').style.display=\'none\'; document.getElementById.style.backgroundColor = "#A9A9A9";if(Experigen.trackTimes) {Experigen.timeTracker.set_start_time();}" ';
+		str += ' onClick="Experigen.screen().playSound(\'' + soundID + '\',this); document.getElementById(\'' + soundID + '\').style.display=\'none\'; if(Experigen.trackTimes) {Experigen.timeTracker.set_start_time();}" ';
 		str += ' class="soundbutton"'
 		str += '>';
 		return str;
